@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#7c4dff"
+  >
+
+  <title>Mundo do Arthur</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- =====================================================
+       CABEÇALHO
+  ====================================================== -->
+
+  <header class="topbar">
+
+    <div class="logo-area">
+
+      <div class="logo-icon">
+        ⭐
+      </div>
+
+      <div>
+        <span class="logo-subtitle">
+          Bem-vindo ao
+        </span>
+
+        <h1>
+          Mundo do Arthur
+        </h1>
+      </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+      <button
+        id="soundButton"
+        class="sound-button"
+        aria-label="Ativar ou desativar sons"
+      >
+        🔊
+      </button>
+
+      <div class="stars">
+        <span>⭐</span>
+
+        <strong id="starCount">
+          0
+        </strong>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- ===================================================
+         HERO
+         Foto do Arthur ao fundo + Girafinha animada
+    ==================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <span class="hero-label">
+          ✨ Aprender brincando
+        </span>
+
+        <h2>
+          Olá, Arthur! 👋
+        </h2>
+
+        <p>
+          Qual aventura vamos escolher hoje?
+        </p>
+
+      </div>
+
+
+      <div class="hero-mascot">
+
+        <img
+          id="heroMascotImage"
+          src="assets/mascote/girafinha_inicio.png"
+          alt="Girafinha"
+          class="hero-mascot-img"
+        >
+
+        <div
+          id="heroMascotSpeech"
+          class="speech-bubble"
+        >
+          Vamos brincar?
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         EVOLUÇÃO DA GIRAFINHA
+    ==================================================== -->
+
+    <section class="level-section">
+
+      <div class="level-card">
+
+        <div class="level-mascot">
+
+          <img
+            id="levelMascotImage"
+            src="assets/mascote/girafinha_recebendo.png"
+            alt="Girafinha"
+          >
+
+        </div>
+
+
+        <div class="level-info">
+
+          <span class="level-eyebrow">
+            🦒 Evolução da Girafinha
+          </span>
+
+
+          <div class="level-title-row">
+
+            <h3 id="levelName">
+              Amiguinha
+            </h3>
+
+            <span
+              id="levelNumber"
+              class="level-number"
+            >
+              Nível 1
+            </span>
+
+          </div>
+
+
+          <p id="levelMessage">
+            Cada estrelinha ajuda a Girafinha a viver novas aventuras com você!
+          </p>
+
+
+          <div class="level-progress-track">
+
+            <div
+              id="levelProgressBar"
+              class="level-progress-bar"
+            ></div>
+
+          </div>
+
+
+          <div class="level-progress-text">
+
+            <strong id="levelProgressText">
+              0 de 10 estrelas
+            </strong>
+
+            <span id="nextLevelText">
+              Próximo: Exploradora
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         JOGOS
+    ==================================================== -->
+
+    <section class="games-section">
+
+      <div class="section-title">
+
+        <span>
+          Aventuras
+        </span>
+
+        <h3>
+          Escolha uma brincadeira
+        </h3>
+
+      </div>
+
+
+      <div class="games-grid">
+
+
+        <!-- MEMÓRIA -->
+
+        <button
+          class="game-card memory"
+          data-game="memoria"
+        >
+
+          <div class="game-icon">
+            🧠
+          </div>
+
+          <div class="game-info">
+
+            <h4>
+              Jogo da Memória
+            </h4>
+
+            <p>
+              Encontre os pares e treine sua atenção.
+            </p>
+
+          </div>
+
+          <div class="game-arrow">
+            →
+          </div>
+
+        </button>
+
+
+        <!-- ANIMAIS -->
+
+        <button
+          class="game-card animals"
+          data-game="animais"
+        >
+
+          <div class="game-icon">
+            🐶
+          </div>
+
+          <div class="game-info">
+
+            <h4>
+              Descubra o Animal
+            </h4>
+
+            <p>
+              Escute as dicas e descubra quem é.
+            </p>
+
+          </div>
+
+          <div class="game-arrow">
+            →
+          </div>
+
+        </button>
+
+
+        <!-- CORES -->
+
+        <button
+          class="game-card colors"
+          data-game="cores"
+        >
+
+          <div class="game-icon">
+            🔵
+          </div>
+
+          <div class="game-info">
+
+            <h4>
+              Cores e Formas
+            </h4>
+
+            <p>
+              Descubra cores, formas e combinações.
+            </p>
+
+          </div>
+
+          <div class="game-arrow">
+            →
+          </div>
+
+        </button>
+
+
+        <!-- DESENHO -->
+
+        <button
+          class="game-card drawing"
+          data-game="desenho"
+        >
+
+          <div class="game-icon">
+            🎨
+          </div>
+
+          <div class="game-info">
+
+            <h4>
+              Vamos Desenhar
+            </h4>
+
+            <p>
+              Use sua imaginação para criar.
+            </p>
+
+          </div>
+
+          <div class="game-arrow">
+            →
+          </div>
+
+        </button>
+
+
+        <!-- QUEBRA-CABEÇA -->
+
+        <button
+          class="game-card puzzle"
+          data-game="quebracabeca"
+        >
+
+          <div class="game-icon">
+            🧩
+          </div>
+
+          <div class="game-info">
+
+            <h4>
+              Quebra-Cabeça
+            </h4>
+
+            <p>
+              Monte as peças e descubra a imagem.
+            </p>
+
+          </div>
+
+          <div class="game-arrow">
+            →
+          </div>
+
+        </button>
+
+
+        <!-- LETRAS -->
+
+        <button
+          class="game-card letters"
+          data-game="letras"
+        >
+
+          <div class="game-icon">
+            🔤
+          </div>
+
+          <div class="game-info">
+
+            <h4>
+              Brincando com Letras
+            </h4>
+
+            <p>
+              Descubra letras e sons das palavras.
+            </p>
+
+          </div>
+
+          <div class="game-arrow">
+            →
+          </div>
+
+        </button>
+
+
+        <!-- NÚMEROS -->
+
+        <button
+          class="game-card numbers"
+          data-game="numeros"
+        >
+
+          <div class="game-icon">
+            🔢
+          </div>
+
+          <div class="game-info">
+
+            <h4>
+              Brincando com Números
+            </h4>
+
+            <p>
+              Conte, observe e descubra os números.
+            </p>
+
+          </div>
+
+          <div class="game-arrow">
+            →
+          </div>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         PROGRESSO
+    ==================================================== -->
+
+    <section class="progress-section">
+
+      <div class="section-title">
+
+        <span>
+          Meu progresso
+        </span>
+
+        <h3>
+          Veja como você está indo
+        </h3>
+
+      </div>
+
+
+      <div class="progress-grid">
+
+        <div class="progress-card">
+
+          <span>
+            ⭐
+          </span>
+
+          <strong id="progressStars">
+            0
+          </strong>
+
+          <small>
+            Estrelas
+          </small>
+
+        </div>
+
+
+        <div class="progress-card">
+
+          <span>
+            🎮
+          </span>
+
+          <strong id="progressGames">
+            0
+          </strong>
+
+          <small>
+            Partidas
+          </small>
+
+        </div>
+
+
+        <div class="progress-card">
+
+          <span>
+            🧠
+          </span>
+
+          <strong id="progressPairs">
+            0
+          </strong>
+
+          <small>
+            Pares
+          </small>
+
+        </div>
+
+
+        <div class="progress-card">
+
+          <span>
+            🏆
+          </span>
+
+          <strong id="progressWins">
+            0
+          </strong>
+
+          <small>
+            Vitórias
+          </small>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         CONQUISTAS
+    ==================================================== -->
+
+    <section class="achievements-section">
+
+      <div class="section-title achievements-heading">
+
+        <div>
+
+          <span>
+            Minhas conquistas
+          </span>
+
+          <h3>
+            Álbum de medalhas
+          </h3>
+
+        </div>
+
+
+        <div class="achievement-heading-actions">
+
+          <button
+            id="resetAchievementsButton"
+            class="reset-achievements-button"
+            type="button"
+            aria-label="Resetar álbum de conquistas"
+            title="Resetar álbum de conquistas"
+          >
+            ↻ Resetar
+          </button>
+
+
+          <div class="achievement-counter">
+
+            <strong id="achievementCount">
+              0
+            </strong>
+
+            /
+
+            <span id="achievementTotal">
+              0
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <p class="achievements-intro">
+        Continue brincando para encher o álbum.
+        As medalhas bloqueadas dão uma pista do próximo desafio!
+      </p>
+
+
+      <div
+        id="achievementGrid"
+        class="achievement-grid"
+      ></div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       RODAPÉ
+  ====================================================== -->
+
+  <footer>
+
+    <p>
+      Feito com carinho para o Arthur 💜
+    </p>
+
+  </footer>
+
+</div>
+
+
+<!-- =======================================================
+     TOAST
+======================================================== -->
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+<!-- =======================================================
+     MODAL DE CONQUISTA
+======================================================== -->
+
+<div
+  id="achievementModal"
+  class="achievement-modal"
+  aria-hidden="true"
+>
+
+  <div
+    class="achievement-modal-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="achievementModalTitle"
+  >
+
+    <div
+      id="achievementCelebration"
+      class="achievement-celebration"
+    ></div>
+
+
+    <img
+      src="assets/mascote/girafinha_conquista.png"
+      alt="Girafinha comemorando uma conquista"
+      class="achievement-mascot"
+    >
+
+
+    <span class="achievement-modal-kicker">
+      ✨ Uau, Arthur! ✨
+    </span>
+
+
+    <h3 id="achievementModalTitle">
+      Nova conquista!
+    </h3>
+
+
+    <div
+      id="achievementModalIcon"
+      class="achievement-modal-icon"
+    >
+      🏅
+    </div>
+
+
+    <h4 id="achievementModalName">
+      Primeira Estrela
+    </h4>
+
+
+    <p id="achievementModalDescription">
+      Você ganhou uma nova medalha!
+    </p>
+
+
+    <button
+      id="achievementModalButton"
+      class="achievement-modal-button"
+      type="button"
+    >
+      Que legal! ⭐
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     MODAL PARA RESETAR AS CONQUISTAS
+======================================================== -->
+
+<div
+  id="resetAchievementsModal"
+  class="reset-achievements-modal"
+  aria-hidden="true"
+>
+
+  <div
+    class="reset-achievements-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="resetAchievementsTitle"
+  >
+
+    <img
+      src="assets/mascote/girafinha_pensativa.png"
+      alt="Girafinha pensativa"
+      class="reset-achievements-mascot"
+    >
+
+
+    <span class="reset-achievements-kicker">
+      🏅 Álbum de medalhas
+    </span>
+
+
+    <h3 id="resetAchievementsTitle">
+      Começar o álbum de novo?
+    </h3>
+
+
+    <p>
+      As medalhas conquistadas serão guardadas e o álbum começará
+      novamente do zero.
+    </p>
+
+
+    <div class="reset-achievements-warning">
+
+      <span>
+        ⭐
+      </span>
+
+      <div>
+        <strong>
+          Fique tranquilo!
+        </strong>
+
+        <small>
+          Suas estrelas, nível da Girafinha, partidas e progresso
+          nos jogos não serão apagados.
+        </small>
+      </div>
+
+    </div>
+
+
+    <div class="reset-achievements-actions">
+
+      <button
+        id="cancelResetAchievementsButton"
+        class="reset-cancel-button"
+        type="button"
+      >
+        Cancelar
+      </button>
+
+
+      <button
+        id="confirmResetAchievementsButton"
+        class="reset-confirm-button"
+        type="button"
+      >
+        ↻ Sim, começar de novo
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

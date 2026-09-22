@@ -1,0 +1,745 @@
+:root{
+  --white:#fff;
+  --text:#302844;
+  --text-light:#756d87;
+  --green:#4caf83;
+  --green-dark:#34836a;
+  --green-light:#e1f6ed;
+  --purple:#7c4dff;
+  --yellow:#ffc83d;
+  --red:#ef6b73;
+  --shadow:0 14px 35px rgba(72,52,115,.12);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+
+  background:
+    radial-gradient(
+      circle at 5% 10%,
+      rgba(76,175,131,.18),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 94% 10%,
+      rgba(124,77,255,.12),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #fbfffd,
+      #f5f0ff
+    );
+}
+
+button{
+  font-family:inherit;
+}
+
+.drawing-app{
+  width:min(1250px,calc(100% - 24px));
+  margin:auto;
+  padding:18px 0 30px;
+}
+
+
+/* =========================================================
+   TOPO
+========================================================= */
+
+.topbar{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.back-button,
+.sound-button{
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:15px;
+  background:#fff;
+  font-size:21px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+}
+
+.back-button{
+  justify-self:start;
+  color:var(--purple);
+  font-weight:900;
+}
+
+.header-actions{
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.stars{
+  min-width:76px;
+  height:48px;
+  padding:0 13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  border-radius:15px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+.game-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.title-icon{
+  font-size:32px;
+}
+
+.game-title small{
+  display:block;
+  color:var(--green-dark);
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.game-title h1{
+  margin:1px 0 0;
+  font-size:20px;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.drawing-layout{
+  display:grid;
+  grid-template-columns:285px 1fr;
+  gap:18px;
+}
+
+
+/* =========================================================
+   PAINEL
+========================================================= */
+
+.tools-panel{
+  padding:18px;
+  border-radius:26px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+.mascot-box{
+  text-align:center;
+  padding-bottom:15px;
+  border-bottom:1px solid #eeeaf2;
+}
+
+.mascot-box img{
+  width:110px;
+  height:110px;
+  object-fit:contain;
+}
+
+.mascot-speech{
+  margin-top:-5px;
+  padding:9px 11px;
+  border-radius:14px;
+  background:var(--green-light);
+  color:#316a58;
+  font-size:11px;
+  font-weight:800;
+  line-height:1.35;
+}
+
+.tool-group{
+  margin-top:18px;
+}
+
+.tool-title{
+  display:block;
+  margin-bottom:9px;
+  color:var(--text-light);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   FERRAMENTAS
+========================================================= */
+
+.tool-buttons{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+
+.tool-button{
+  min-height:76px;
+  padding:8px 4px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:4px;
+  border:2px solid transparent;
+  border-radius:16px;
+  background:#f7f5fa;
+  cursor:pointer;
+  transition:.18s;
+}
+
+.tool-button span{
+  font-size:26px;
+}
+
+.tool-button small{
+  font-size:10px;
+  font-weight:800;
+}
+
+.tool-button:hover{
+  transform:translateY(-2px);
+}
+
+.tool-button.active{
+  border-color:var(--green);
+  background:var(--green-light);
+  color:var(--green-dark);
+}
+
+
+/* =========================================================
+   TAMANHOS
+========================================================= */
+
+.size-buttons{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+
+.size-button{
+  height:44px;
+  display:grid;
+  place-items:center;
+  border:2px solid transparent;
+  border-radius:13px;
+  background:#f7f5fa;
+  cursor:pointer;
+}
+
+.size-button.active{
+  border-color:var(--green);
+  background:var(--green-light);
+}
+
+.size-dot{
+  display:block;
+  border-radius:50%;
+  background:#38333f;
+}
+
+.size-dot.small{
+  width:6px;
+  height:6px;
+}
+
+.size-dot.medium{
+  width:13px;
+  height:13px;
+}
+
+.size-dot.large{
+  width:22px;
+  height:22px;
+}
+
+
+/* =========================================================
+   CORES
+========================================================= */
+
+.color-palette{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:7px;
+}
+
+.color-button{
+  aspect-ratio:1;
+  min-width:0;
+  border:3px solid #fff;
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow:
+    0 0 0 1px rgba(55,45,70,.12);
+  transition:.15s;
+}
+
+.color-button:hover{
+  transform:scale(1.1);
+}
+
+.color-button.active{
+  transform:scale(1.12);
+  box-shadow:
+    0 0 0 3px var(--purple),
+    0 0 0 5px #fff;
+}
+
+
+/* =========================================================
+   AÇÕES
+========================================================= */
+
+.action-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.action-button{
+  border:0;
+  padding:10px 6px;
+  border-radius:13px;
+  background:#f2eff6;
+  color:var(--text);
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.action-button.danger{
+  background:#ffe8e9;
+  color:#ba454d;
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+.canvas-section{
+  min-width:0;
+}
+
+.mission-card{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:12px;
+  padding:13px 16px;
+  margin-bottom:10px;
+  border-radius:19px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+.mission-icon{
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#fff2b8;
+  font-size:21px;
+}
+
+.mission-card small{
+  display:block;
+  color:var(--purple);
+  font-size:9px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.mission-card strong{
+  display:block;
+  margin-top:2px;
+  font-size:14px;
+}
+
+.mission-card button{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:13px;
+  background:#f2eff6;
+  cursor:pointer;
+  font-size:17px;
+}
+
+
+/* =========================================================
+   STATUS DA FERRAMENTA
+========================================================= */
+
+.tool-status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:9px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#fff;
+  color:var(--text-light);
+  font-size:11px;
+  font-weight:800;
+  box-shadow:0 6px 15px rgba(72,52,115,.08);
+}
+
+
+/* =========================================================
+   FOLHA
+========================================================= */
+
+.canvas-container{
+  position:relative;
+  width:100%;
+  height:620px;
+  overflow:hidden;
+  border-radius:25px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  border:8px solid #fff;
+  touch-action:none;
+}
+
+#drawingCanvas{
+  display:block;
+  width:100%;
+  height:100%;
+  background:#fff;
+  cursor:crosshair;
+  touch-action:none;
+}
+
+
+/* =========================================================
+   BOTÕES INFERIORES
+========================================================= */
+
+.bottom-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:12px;
+}
+
+.save-button,
+.finish-button{
+  border:0;
+  padding:12px 18px;
+  border-radius:15px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.save-button{
+  background:#fff;
+  color:var(--purple);
+  box-shadow:var(--shadow);
+}
+
+.finish-button{
+  background:linear-gradient(
+    135deg,
+    var(--green),
+    #69c49f
+  );
+  color:#fff;
+  box-shadow:0 10px 23px rgba(76,175,131,.25);
+}
+
+
+/* =========================================================
+   MODAIS
+========================================================= */
+
+.finish-modal,
+.confirm-modal{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(42,30,67,.58);
+  backdrop-filter:blur(7px);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s;
+}
+
+.finish-modal.show,
+.confirm-modal.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.finish-card,
+.confirm-card{
+  width:min(430px,100%);
+  padding:25px;
+  border-radius:30px;
+  background:#fff;
+  text-align:center;
+  box-shadow:0 25px 70px rgba(31,18,65,.35);
+  transform:scale(.86);
+  transition:.3s;
+}
+
+.finish-modal.show .finish-card,
+.confirm-modal.show .confirm-card{
+  transform:scale(1);
+}
+
+.finish-card img{
+  height:145px;
+  max-width:190px;
+  object-fit:contain;
+}
+
+.finish-card > span{
+  display:block;
+  color:var(--purple);
+  font-size:11px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.finish-card h2{
+  margin:6px 0 8px;
+  font-size:27px;
+}
+
+.finish-card p,
+.confirm-card p{
+  color:var(--text-light);
+}
+
+.reward{
+  margin:15px auto;
+  padding:12px;
+  max-width:190px;
+  border-radius:15px;
+  background:#fff2b8;
+  color:#735400;
+  font-weight:900;
+}
+
+.finish-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.finish-actions button,
+.confirm-card button{
+  border:0;
+  padding:12px;
+  border-radius:14px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.secondary-button{
+  background:#f0edf4;
+  color:var(--text);
+}
+
+.primary-button{
+  background:var(--purple);
+  color:#fff;
+}
+
+.confirm-icon{
+  font-size:42px;
+}
+
+.confirm-card h3{
+  margin:8px 0;
+  font-size:22px;
+}
+
+.danger-button{
+  background:var(--red);
+  color:#fff;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  z-index:1300;
+  transform:translate(-50%,25px);
+  padding:12px 18px;
+  border-radius:999px;
+  background:#302844;
+  color:#fff;
+  font-weight:800;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  box-shadow:var(--shadow);
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:22px 0 5px;
+  text-align:center;
+  color:#81798f;
+  font-size:13px;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media(max-width:900px){
+
+  .drawing-layout{
+    grid-template-columns:1fr;
+  }
+
+  .tools-panel{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+  }
+
+  .mascot-box{
+    grid-column:1 / -1;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-align:left;
+  }
+
+  .mascot-box img{
+    width:80px;
+    height:80px;
+  }
+
+  .tool-group{
+    margin-top:0;
+  }
+
+  .canvas-container{
+    height:520px;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .drawing-app{
+    width:calc(100% - 12px);
+    padding-top:8px;
+  }
+
+  .topbar{
+    grid-template-columns:auto 1fr auto;
+  }
+
+  .title-icon{
+    display:none;
+  }
+
+  .game-title h1{
+    font-size:15px;
+  }
+
+  .game-title small{
+    font-size:8px;
+  }
+
+  .stars{
+    display:none;
+  }
+
+  .tools-panel{
+    grid-template-columns:1fr;
+    padding:13px;
+  }
+
+  .mascot-box{
+    display:none;
+  }
+
+  .tool-buttons{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .color-palette{
+    grid-template-columns:repeat(10,1fr);
+    gap:5px;
+  }
+
+  .color-button{
+    border-width:2px;
+  }
+
+  .canvas-container{
+    height:470px;
+    border-width:5px;
+    border-radius:19px;
+  }
+
+  .mission-card{
+    padding:10px 12px;
+  }
+
+  .mission-card strong{
+    font-size:12px;
+  }
+
+  .bottom-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .finish-actions{
+    grid-template-columns:1fr;
+  }
+
+}

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0"
+>
+
+<meta
+name="theme-color"
+content="#4caf83"
+>
+
+<title>
+Vamos Desenhar | Mundo do Arthur
+</title>
+
+<link
+rel="stylesheet"
+href="css/desenho.css"
+>
+
+</head>
+
+
+<body>
+
+
+<div class="drawing-app">
+
+
+<header class="topbar">
+
+<button
+id="backButton"
+class="back-button"
+aria-label="Voltar"
+>
+←
+</button>
+
+
+<div class="game-title">
+
+<div class="title-icon">
+🎨
+</div>
+
+<div>
+
+<small>
+Mundo do Arthur
+</small>
+
+<h1>
+Vamos Desenhar
+</h1>
+
+</div>
+
+</div>
+
+
+<div class="header-actions">
+
+<button
+id="soundButton"
+class="sound-button"
+aria-label="Ativar ou desativar sons"
+>
+🔊
+</button>
+
+<div class="stars">
+⭐ <strong id="starCount">0</strong>
+</div>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<section class="drawing-layout">
+
+
+<!-- =========================================================
+     FERRAMENTAS
+========================================================= -->
+
+<aside class="tools-panel">
+
+
+<div class="mascot-box">
+
+<img
+src="assets/mascote/girafinha_ensinando.png"
+alt="Girafinha"
+id="mascotImage"
+>
+
+<div
+id="mascotSpeech"
+class="mascot-speech"
+>
+Vamos criar uma obra de arte?
+</div>
+
+</div>
+
+
+
+<div class="tool-group">
+
+<span class="tool-title">
+Ferramentas
+</span>
+
+
+<div class="tool-buttons">
+
+
+<button
+class="tool-button active"
+data-tool="brush"
+title="Pincel"
+>
+<span>🖌️</span>
+<small>Pincel</small>
+</button>
+
+
+<button
+class="tool-button"
+data-tool="bucket"
+title="Balde de tinta"
+>
+<span>🪣</span>
+<small>Balde</small>
+</button>
+
+
+<button
+class="tool-button"
+data-tool="eraser"
+title="Borracha"
+>
+<span>🧽</span>
+<small>Borracha</small>
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<div
+id="sizeGroup"
+class="tool-group"
+>
+
+<span class="tool-title">
+Tamanho do pincel
+</span>
+
+
+<div class="size-buttons">
+
+
+<button
+class="size-button"
+data-size="5"
+>
+<span class="size-dot small"></span>
+</button>
+
+
+<button
+class="size-button active"
+data-size="12"
+>
+<span class="size-dot medium"></span>
+</button>
+
+
+<button
+class="size-button"
+data-size="24"
+>
+<span class="size-dot large"></span>
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<div class="tool-group">
+
+<span class="tool-title">
+Escolha uma cor
+</span>
+
+
+<div
+id="colorPalette"
+class="color-palette"
+></div>
+
+</div>
+
+
+
+<div class="tool-group">
+
+<span class="tool-title">
+Ações
+</span>
+
+
+<div class="action-buttons">
+
+<button
+id="undoButton"
+class="action-button"
+>
+↶ Desfazer
+</button>
+
+
+<button
+id="clearButton"
+class="action-button danger"
+>
+🗑️ Limpar
+</button>
+
+</div>
+
+</div>
+
+
+</aside>
+
+
+
+<!-- =========================================================
+     ÁREA DO DESENHO
+========================================================= -->
+
+<section class="canvas-section">
+
+
+<div class="mission-card">
+
+<div class="mission-icon">
+✨
+</div>
+
+<div>
+
+<small>
+Ideia para desenhar
+</small>
+
+<strong id="missionText">
+Desenhe algo que deixa você feliz!
+</strong>
+
+</div>
+
+<button
+id="newMissionButton"
+title="Nova ideia"
+>
+🔄
+</button>
+
+</div>
+
+
+
+<div
+id="toolStatus"
+class="tool-status"
+>
+
+<span id="toolStatusIcon">
+🖌️
+</span>
+
+<span id="toolStatusText">
+Pincel selecionado
+</span>
+
+</div>
+
+
+
+<div
+id="canvasContainer"
+class="canvas-container"
+>
+
+<canvas
+id="drawingCanvas"
+></canvas>
+
+</div>
+
+
+
+<div class="bottom-actions">
+
+
+<button
+id="saveButton"
+class="save-button"
+>
+💾 Salvar desenho
+</button>
+
+
+<button
+id="finishButton"
+class="finish-button"
+>
+⭐ Terminei!
+</button>
+
+
+</div>
+
+
+</section>
+
+
+</section>
+
+
+</main>
+
+
+<footer>
+Feito com carinho para o Arthur 💜
+</footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     MODAL DE CONCLUSÃO
+========================================================= -->
+
+<div
+id="finishModal"
+class="finish-modal"
+aria-hidden="true"
+>
+
+
+<div class="finish-card">
+
+
+<img
+src="assets/mascote/girafinha_conquista.png"
+alt="Girafinha comemorando"
+>
+
+
+<span>
+✨ Obra de arte concluída! ✨
+</span>
+
+
+<h2>
+Que desenho incrível, Arthur!
+</h2>
+
+
+<p>
+Sua imaginação deixou o Mundo do Arthur ainda mais bonito.
+</p>
+
+
+<div class="reward">
+⭐ +3 estrelas
+</div>
+
+
+<div class="finish-actions">
+
+
+<button
+id="drawAgainButton"
+class="secondary-button"
+>
+Desenhar de novo
+</button>
+
+
+<button
+id="finishHomeButton"
+class="primary-button"
+>
+Voltar ao início
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     CONFIRMAÇÃO LIMPAR
+========================================================= -->
+
+<div
+id="clearModal"
+class="confirm-modal"
+aria-hidden="true"
+>
+
+
+<div class="confirm-card">
+
+<div class="confirm-icon">
+🗑️
+</div>
+
+<h3>
+Limpar o desenho?
+</h3>
+
+<p>
+Tudo que está na folha será apagado.
+</p>
+
+
+<div>
+
+<button
+id="cancelClearButton"
+class="secondary-button"
+>
+Cancelar
+</button>
+
+<button
+id="confirmClearButton"
+class="danger-button"
+>
+Limpar
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div
+id="toast"
+class="toast"
+></div>
+
+
+<script src="js/desenho.js"></script>
+
+</body>
+
+</html>

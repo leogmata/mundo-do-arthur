@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#36b6a6">
+<title>Números | Mundo do Arthur</title>
+<link rel="stylesheet" href="css/numeros.css">
+</head>
+<body>
+
+<div class="numbers-app">
+
+<header class="numbers-header">
+<button class="back-button" onclick="window.location.href='index.html'" aria-label="Voltar">←</button>
+
+<div class="numbers-title">
+<span>🔢</span>
+<div><small>Mundo do Arthur</small><h1>Brincando com Números</h1></div>
+</div>
+
+<div class="header-actions">
+<button id="soundButton" class="sound-button">🔊</button>
+<div class="numbers-stars">⭐ <strong id="starCount">0</strong></div>
+</div>
+</header>
+
+<main>
+
+<section class="mascot-section">
+<div class="mascot-box">
+<div class="mascot-image-box"><img id="mascotImage" src="assets/mascote/girafinha_ensinando.png" alt="Girafinha" class="mascot-image"></div>
+<div class="mascot-message"><span class="mascot-name">Sua amiga Girafinha</span><p id="mascotText">Vamos brincar com os números?</p></div>
+</div>
+</section>
+
+<section class="game-info">
+<div><span class="label">Desafio</span><h2 id="questionTitle">Qual é este número?</h2><p id="questionSubtitle">Observe e escolha a resposta correta.</p></div>
+
+<div class="status-grid">
+<div class="status-card"><span>Rodada</span><strong><span id="roundNumber">1</span>/10</strong></div>
+<div class="status-card"><span>Acertos</span><strong id="score">0</strong></div>
+<div class="status-card"><span>Sequência</span><strong>🔥 <span id="streak">0</span></strong></div>
+</div>
+</section>
+
+<section class="challenge-card">
+
+<div class="challenge-area">
+<div id="mainNumber" class="main-number">5</div>
+<div id="objectsArea" class="objects-area"></div>
+<h3 id="challengeText">Que número é este?</h3>
+<button id="listenButton" class="listen-button">🔊 Ouvir a pergunta</button>
+</div>
+
+<div class="answers-area">
+<span class="answers-label">Escolha uma resposta</span>
+<div id="answerGrid" class="answer-grid"></div>
+</div>
+
+</section>
+
+<section id="feedbackArea" class="feedback-area">
+<div class="feedback-content">
+<img id="feedbackMascot" src="assets/mascote/girafinha_feliz.png" alt="Girafinha" class="feedback-mascot">
+<div><span id="feedbackLabel">Muito bem!</span><p id="feedbackText"></p></div>
+</div>
+<button id="nextButton" class="next-button">Próxima rodada →</button>
+</section>
+
+<section class="progress-area">
+<div class="progress-label"><span>Progresso</span><strong id="progressText">1 de 10</strong></div>
+<div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+</section>
+
+</main>
+</div>
+
+<div id="resultModal" class="result-modal">
+<div class="result-card">
+<img id="resultMascot" src="assets/mascote/girafinha_comemorando.png" alt="Girafinha" class="result-mascot">
+<span class="result-label">Fim da aventura!</span>
+<h2 id="resultTitle">Muito bem, Arthur!</h2>
+<p id="resultMessage"></p>
+<div class="final-score"><strong id="finalScore">0</strong><span>/10 acertos</span></div>
+<div class="reward-box">Você ganhou <strong id="rewardText">+3 ⭐</strong></div>
+<button id="playAgainButton" class="play-again-button">🔢 Jogar novamente</button>
+<button class="home-button" onclick="window.location.href='index.html'">Voltar ao início</button>
+</div>
+</div>
+
+<div id="confettiContainer" class="confetti-container"></div>
+
+<script src="js/numeros.js"></script>
+</body>
+</html>

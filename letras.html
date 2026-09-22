@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#ff6fae">
+
+<title>Brincando com Letras | Mundo do Arthur</title>
+
+<link rel="stylesheet" href="css/letras.css">
+</head>
+
+<body>
+
+<div class="game-app">
+
+<header class="topbar">
+
+<button
+id="backButton"
+class="back-button"
+aria-label="Voltar"
+>
+←
+</button>
+
+<div class="game-title">
+
+<div class="game-title-icon">
+🔤
+</div>
+
+<div>
+<small>Mundo do Arthur</small>
+<h1>Brincando com Letras</h1>
+</div>
+
+</div>
+
+<div class="header-actions">
+
+<button
+id="soundButton"
+class="sound-button"
+aria-label="Ativar ou desativar sons"
+>
+🔊
+</button>
+
+<div class="stars">
+⭐ <strong id="starCount">0</strong>
+</div>
+
+</div>
+
+</header>
+
+
+<main>
+
+<section class="game-card">
+
+<div class="progress-area">
+
+<div class="progress-info">
+<span id="roundText">Pergunta 1 de 10</span>
+<span id="scoreText">0 acertos</span>
+</div>
+
+<div class="progress-track">
+<div id="progressBar" class="progress-bar"></div>
+</div>
+
+</div>
+
+
+<div class="mascot-area">
+
+<img
+id="mascotImage"
+src="assets/mascote/girafinha_ensinando.png"
+alt="Girafinha"
+class="mascot"
+>
+
+<div
+id="mascotSpeech"
+class="speech-bubble"
+>
+Vamos descobrir com qual letra começa?
+</div>
+
+</div>
+
+
+<section
+id="questionArea"
+class="question-area"
+>
+
+<span class="question-label">
+🔎 Observe bem
+</span>
+
+<div
+id="objectPicture"
+class="object-picture"
+>
+🐘
+</div>
+
+<h2
+id="objectName"
+class="object-name"
+>
+ELEFANTE
+</h2>
+
+<p
+id="questionText"
+class="question-text"
+>
+Elefante começa com qual letra?
+</p>
+
+
+<button
+id="listenButton"
+class="listen-button"
+>
+🔊 Ouvir a Girafinha
+</button>
+
+
+<div
+id="answers"
+class="answers"
+></div>
+
+</section>
+
+
+<div
+id="feedback"
+class="feedback"
+aria-live="polite"
+></div>
+
+
+<button
+id="nextButton"
+class="next-button hidden"
+>
+Próxima pergunta →
+</button>
+
+</section>
+
+
+<section class="tip-card">
+
+<div class="tip-icon">
+💡
+</div>
+
+<div>
+<strong>Dica da Girafinha</strong>
+<p>
+Fale o nome da figura devagar e escute o primeiro som da palavra.
+</p>
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+Feito com carinho para o Arthur 💜
+</footer>
+
+</div>
+
+
+<!-- RESULTADO -->
+
+<div
+id="resultModal"
+class="result-modal"
+aria-hidden="true"
+>
+
+<div class="result-card">
+
+<img
+id="resultMascot"
+src="assets/mascote/girafinha_comemorando.png"
+alt="Girafinha comemorando"
+>
+
+<span class="result-kicker">
+✨ Muito bem, Arthur! ✨
+</span>
+
+<h2 id="resultTitle">
+Você terminou!
+</h2>
+
+<div class="result-score">
+
+<strong id="finalScore">
+0
+</strong>
+
+<span>
+de 10
+</span>
+
+</div>
+
+<p id="resultMessage">
+Você mandou muito bem!
+</p>
+
+<div class="result-reward">
+⭐ Você ganhou
+<strong id="rewardStars">0</strong>
+estrelas!
+</div>
+
+<div class="result-actions">
+
+<button
+id="playAgainButton"
+class="secondary-button"
+>
+Jogar de novo
+</button>
+
+<button
+id="homeButton"
+class="primary-button"
+>
+Voltar ao início
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script src="js/letras.js"></script>
+
+</body>
+</html>

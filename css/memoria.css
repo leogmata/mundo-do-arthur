@@ -1,0 +1,72 @@
+:root{--white:#fff;--text:#302844;--text-light:#716a80;--purple:#7c4dff;--purple-dark:#6137db;--purple-light:#eee8ff;--yellow:#fff1b5;--shadow:0 14px 35px rgba(72,52,115,.13)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:"Segoe UI",Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 10% 5%,rgba(255,213,75,.28),transparent 24%),radial-gradient(circle at 90% 5%,rgba(124,77,255,.15),transparent 25%),linear-gradient(180deg,#fbf9ff,#f5f0ff)}
+button{font-family:inherit}
+.memory-app{width:min(1100px,calc(100% - 24px));margin:auto;padding:18px 0 35px}
+.memory-header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;margin-bottom:22px}
+.back-button,.sound-button{width:50px;height:50px;border:0;border-radius:16px;background:#fff;cursor:pointer;box-shadow:var(--shadow);font-size:22px}
+.memory-title{display:flex;align-items:center;gap:12px}
+.memory-title>span{width:54px;height:54px;display:grid;place-items:center;border-radius:18px;background:var(--purple-light);font-size:29px}
+.memory-title small{color:var(--purple);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.memory-title h1{margin:2px 0 0;font-size:26px}
+.header-actions{display:flex;align-items:center;gap:10px}
+.memory-stars{min-width:76px;height:48px;display:flex;align-items:center;justify-content:center;gap:7px;padding:0 14px;border-radius:15px;background:#fff;box-shadow:var(--shadow)}
+.mascot-section,.difficulty-section{margin-bottom:22px}
+.mascot-box{display:flex;align-items:center;gap:18px;padding:14px 22px;border-radius:24px;background:linear-gradient(135deg,#fff6cf,#fffbea);box-shadow:var(--shadow);border:2px solid rgba(255,205,72,.35);transition:.25s}
+.mascot-box.success{background:linear-gradient(135deg,#def7e3,#f0fbf2)}
+.mascot-box.try-again{background:linear-gradient(135deg,#fff0e0,#fff8ef)}
+.mascot-image-box{width:110px;height:105px;display:grid;place-items:end center;flex-shrink:0;overflow:visible}
+.mascot-image{max-width:120px;max-height:125px;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(60,40,20,.15));transition:opacity .18s ease,transform .18s ease}
+.mascot-image.changing{opacity:0;transform:scale(.92)}
+.mascot-name{color:#b47b00;font-size:12px;font-weight:900;letter-spacing:.8px;text-transform:uppercase}
+.mascot-message p{margin:5px 0 0;font-size:19px;font-weight:700}
+.memory-intro{display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px;margin-bottom:22px}
+.label,.difficulty-title>span{color:var(--purple);font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.memory-intro h2{margin:6px 0;font-size:clamp(30px,5vw,48px)}
+.memory-intro p{margin:0;color:var(--text-light);font-size:17px}
+.memory-status{display:flex;gap:10px}
+.status-card{min-width:110px;padding:13px 18px;text-align:center;border-radius:18px;background:#fff;box-shadow:var(--shadow)}
+.status-card>span{display:block;margin-bottom:4px;color:var(--text-light);font-size:12px;font-weight:700;text-transform:uppercase}
+.status-card strong{font-size:23px}
+.difficulty-title{margin-bottom:12px}
+.difficulty-title h3{margin:4px 0 0;font-size:22px}
+.difficulty-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.difficulty-button{padding:16px;display:flex;align-items:center;gap:12px;border:2px solid transparent;border-radius:18px;background:#fff;color:var(--text);text-align:left;cursor:pointer;box-shadow:var(--shadow)}
+.difficulty-button.active{border-color:var(--purple);background:var(--purple-light)}
+.difficulty-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:#fff;font-size:25px}
+.difficulty-text strong{display:block;margin-bottom:4px}
+.difficulty-text small{color:var(--text-light)}
+.game-area{padding:26px;border-radius:28px;background:linear-gradient(135deg,#e7ddff,#f3eeff);box-shadow:var(--shadow)}
+.memory-board{display:grid;gap:16px}
+.memory-card{position:relative;aspect-ratio:1/1;border:0;background:transparent;perspective:800px;cursor:pointer;padding:0}
+.card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .45s}
+.memory-card.flipped .card-inner,.memory-card.matched .card-inner{transform:rotateY(180deg)}
+.card-face{position:absolute;inset:0;display:grid;place-items:center;border-radius:22px;backface-visibility:hidden;box-shadow:0 10px 22px rgba(72,52,115,.12)}
+.card-front{background:linear-gradient(145deg,#8d61ff,#7042e5);font-size:42px}
+.card-front::after{content:"⭐"}
+.card-back{transform:rotateY(180deg);background:#fff;font-size:clamp(40px,7vw,70px)}
+.memory-actions{display:flex;justify-content:center;padding-top:22px}
+.restart-button{padding:14px 20px;border:0;border-radius:16px;background:#fff;color:var(--purple-dark);font-weight:800;cursor:pointer;box-shadow:var(--shadow)}
+.victory-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(37,26,61,.48);backdrop-filter:blur(6px);z-index:999}
+.victory-modal.show{display:flex}
+.victory-card{width:min(430px,100%);padding:25px 28px 35px;text-align:center;border-radius:30px;background:#fff;box-shadow:0 30px 70px rgba(32,20,65,.25)}
+.victory-mascot-img{width:150px;max-height:150px;object-fit:contain;margin-bottom:-12px;filter:drop-shadow(0 10px 10px rgba(60,40,20,.16));animation:victoryBounce .8s ease-in-out infinite alternate}
+@keyframes victoryBounce{to{transform:translateY(-7px)}}
+.victory-icon{width:75px;height:75px;margin:0 auto 14px;display:grid;place-items:center;border-radius:50%;background:var(--yellow);font-size:40px}
+.victory-card h2{margin:0 0 8px;font-size:32px}
+.victory-card p{color:var(--text-light)}
+.victory-stars{margin:18px 0;font-size:34px}
+.victory-info strong{color:var(--purple)}
+.play-again-button,.home-button{width:100%;padding:14px 18px;border:0;border-radius:16px;font-weight:800;cursor:pointer}
+.play-again-button{margin-top:15px;background:var(--purple);color:#fff}
+.home-button{margin-top:10px;background:var(--purple-light);color:var(--purple-dark)}
+.confetti-container{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1000}
+.confetti{position:absolute;top:-30px;width:12px;height:18px;border-radius:3px;animation:confettiFall linear forwards}
+@keyframes confettiFall{to{transform:translateY(110vh) rotate(720deg);opacity:.8}}
+.achievement-toast{position:fixed;top:18px;left:50%;transform:translate(-50%,-160px);display:flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;border-radius:22px;background:#fff;box-shadow:0 20px 50px rgba(40,25,80,.25);z-index:2000;transition:.35s}
+.achievement-toast.show{transform:translate(-50%,0)}
+.achievement-mascot{width:70px;height:70px;object-fit:contain}
+.achievement-toast small{display:block;color:var(--purple);font-weight:800;text-transform:uppercase}
+.achievement-toast strong{display:block;margin-top:2px}
+@media(max-width:750px){.memory-intro{grid-template-columns:1fr}.difficulty-buttons{grid-template-columns:1fr}}
+@media(max-width:520px){.memory-app{width:calc(100% - 16px)}.memory-header{gap:7px}.back-button,.sound-button{width:42px;height:42px}.memory-title>span{display:none}.memory-title h1{font-size:17px}.memory-title small{font-size:9px}.memory-stars{min-width:58px;height:42px;padding:0 8px}.mascot-box{padding:10px 14px;gap:10px}.mascot-image-box{width:80px;height:90px}.mascot-image{max-width:90px;max-height:100px}.mascot-message p{font-size:15px}.memory-status{width:100%}.status-card{flex:1;min-width:0}.game-area{padding:10px}.memory-board{gap:7px}.card-face{border-radius:12px}.card-back{font-size:34px}.card-front{font-size:24px}.victory-mascot-img{width:120px}}

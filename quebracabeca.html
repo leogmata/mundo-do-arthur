@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#ffb347">
+
+  <title>Quebra-Cabeça | Mundo do Arthur</title>
+
+  <link rel="stylesheet" href="css/quebracabeca.css">
+</head>
+
+<body>
+
+<div class="puzzle-app">
+
+  <header class="puzzle-header">
+
+    <button
+      class="back-button"
+      onclick="window.location.href='index.html'"
+      aria-label="Voltar"
+    >
+      ←
+    </button>
+
+    <div class="puzzle-title">
+
+      <span>🧩</span>
+
+      <div>
+        <small>Mundo do Arthur</small>
+        <h1>Quebra-Cabeça</h1>
+      </div>
+
+    </div>
+
+    <div class="header-actions">
+
+      <button
+        id="soundButton"
+        class="sound-button"
+        aria-label="Ativar ou desativar sons"
+      >
+        🔊
+      </button>
+
+      <div class="puzzle-stars">
+        ⭐ <strong id="starCount">0</strong>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- GIRAFINHA -->
+
+    <section class="mascot-section">
+
+      <div class="mascot-box">
+
+        <div class="mascot-image-box">
+
+          <img
+            id="mascotImage"
+            src="assets/mascote/girafinha_inicio.png"
+            alt="Girafinha"
+            class="mascot-image"
+          >
+
+        </div>
+
+        <div class="mascot-message">
+
+          <span class="mascot-name">
+            Sua amiga Girafinha
+          </span>
+
+          <p id="mascotText">
+            Vamos montar esse quebra-cabeça?
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DIFICULDADE -->
+
+    <section class="difficulty-section">
+
+      <div class="difficulty-heading">
+
+        <span>
+          Escolha o desafio
+        </span>
+
+        <h2>
+          Quantas peças vamos montar?
+        </h2>
+
+      </div>
+
+
+      <div class="difficulty-buttons">
+
+        <button
+          class="difficulty-button active"
+          data-level="easy"
+        >
+
+          <span class="difficulty-icon">
+            🌱
+          </span>
+
+          <span>
+            <strong>Fácil</strong>
+            <small>16 peças • 4 × 4 • +5 ⭐</small>
+          </span>
+
+        </button>
+
+
+        <button
+          class="difficulty-button"
+          data-level="medium"
+        >
+
+          <span class="difficulty-icon">
+            🚀
+          </span>
+
+          <span>
+            <strong>Médio</strong>
+            <small>25 peças • 5 × 5 • +8 ⭐</small>
+          </span>
+
+        </button>
+
+
+        <button
+          class="difficulty-button"
+          data-level="hard"
+        >
+
+          <span class="difficulty-icon">
+            🏆
+          </span>
+
+          <span>
+            <strong>Difícil</strong>
+            <small>36 peças • 6 × 6 • +12 ⭐</small>
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- MISSÃO -->
+
+    <section class="game-info">
+
+      <div>
+
+        <span class="label">
+          Missão
+        </span>
+
+        <h2>
+          Monte a imagem!
+        </h2>
+
+        <p>
+          Escolha duas peças para trocá-las ou arraste uma peça até outra.
+        </p>
+
+      </div>
+
+
+      <div class="status-grid">
+
+        <div class="status-card">
+
+          <span>
+            Peças certas
+          </span>
+
+          <strong>
+            <span id="correctPieces">0</span>/<span id="totalPieces">16</span>
+          </strong>
+
+        </div>
+
+
+        <div class="status-card">
+
+          <span>
+            Movimentos
+          </span>
+
+          <strong id="moves">
+            0
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTROLES -->
+
+    <section class="puzzle-controls">
+
+      <div class="theme-area">
+
+        <span>
+          Imagem atual
+        </span>
+
+        <strong id="themeName">
+          Espaço
+        </strong>
+
+      </div>
+
+
+      <div class="control-buttons">
+
+        <button
+          id="previewButton"
+          class="preview-button"
+        >
+          👀 Ver imagem
+        </button>
+
+        <button
+          id="newPuzzleButton"
+          class="new-puzzle-button"
+        >
+          🎲 Nova imagem
+        </button>
+
+        <button
+          id="restartButton"
+          class="restart-button"
+        >
+          🔄 Embaralhar
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- TABULEIRO -->
+
+    <section class="puzzle-area">
+
+      <div class="board-decoration">
+        <span>🧩</span>
+        <strong>Monte todas as peças!</strong>
+      </div>
+
+      <div
+        id="puzzleBoard"
+        class="puzzle-board"
+      ></div>
+
+    </section>
+
+
+    <!-- DICA -->
+
+    <section class="help-card">
+
+      <span>
+        💡
+      </span>
+
+      <p>
+        <strong>Dica:</strong>
+        toque em uma peça e depois em outra para trocar as duas.
+        Você também pode arrastar uma peça até outra.
+      </p>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- =====================================================
+     PRÉVIA
+====================================================== -->
+
+<div
+  id="previewModal"
+  class="preview-modal"
+>
+
+  <div class="preview-card">
+
+    <div class="preview-header">
+
+      <div>
+
+        <span>
+          Imagem completa
+        </span>
+
+        <h2 id="previewTitle">
+          Espaço
+        </h2>
+
+      </div>
+
+      <button
+        id="closePreviewButton"
+        class="close-preview"
+        aria-label="Fechar"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <img
+      id="previewImage"
+      class="preview-image"
+      alt="Imagem do quebra-cabeça"
+    >
+
+
+    <p>
+      Observe com atenção e depois volte a montar.
+    </p>
+
+
+    <button
+      id="continueButton"
+      class="continue-button"
+    >
+      Continuar montando
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     VITÓRIA
+====================================================== -->
+
+<div
+  id="victoryModal"
+  class="victory-modal"
+>
+
+  <div class="victory-card">
+
+    <img
+      src="assets/mascote/girafinha_comemorando.png"
+      alt="Girafinha comemorando"
+      class="victory-mascot"
+    >
+
+    <span class="victory-label">
+      Quebra-cabeça completo!
+    </span>
+
+    <h2>
+      Você conseguiu, Arthur!
+    </h2>
+
+    <p id="victoryMessage">
+      Todas as peças estão no lugar certo.
+    </p>
+
+
+    <div class="victory-info">
+
+      <div>
+
+        <span>
+          🧩
+        </span>
+
+        <strong id="victoryPieces">
+          16
+        </strong>
+
+        <small>
+          Peças
+        </small>
+
+      </div>
+
+
+      <div>
+
+        <span>
+          👆
+        </span>
+
+        <strong id="victoryMoves">
+          0
+        </strong>
+
+        <small>
+          Movimentos
+        </small>
+
+      </div>
+
+    </div>
+
+
+    <div class="reward-box">
+
+      Você ganhou
+
+      <strong id="rewardText">
+        +5 ⭐
+      </strong>
+
+    </div>
+
+
+    <button
+      id="playAgainButton"
+      class="play-again-button"
+    >
+      🧩 Montar outra imagem
+    </button>
+
+
+    <button
+      class="home-button"
+      onclick="window.location.href='index.html'"
+    >
+      Voltar ao início
+    </button>
+
+  </div>
+
+</div>
+
+
+<div
+  id="confettiContainer"
+  class="confetti-container"
+></div>
+
+
+<script src="js/quebracabeca.js"></script>
+
+</body>
+
+</html>

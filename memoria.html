@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#7c4dff">
+  <title>Jogo da Memória | Mundo do Arthur</title>
+  <link rel="stylesheet" href="css/memoria.css">
+</head>
+<body>
+<div class="memory-app">
+  <header class="memory-header">
+    <button class="back-button" onclick="window.location.href='index.html'" aria-label="Voltar">←</button>
+    <div class="memory-title"><span>🧠</span><div><small>Mundo do Arthur</small><h1>Jogo da Memória</h1></div></div>
+    <div class="header-actions"><button id="soundButton" class="sound-button">🔊</button><div class="memory-stars">⭐ <strong id="starCount">0</strong></div></div>
+  </header>
+
+  <main>
+    <section class="mascot-section">
+      <div class="mascot-box">
+        <div class="mascot-image-box"><img id="mascotImage" src="assets/mascote/girafinha_inicio.png" alt="Girafinha" class="mascot-image"></div>
+        <div class="mascot-message"><span class="mascot-name">Sua amiga Girafinha</span><p id="mascotText">Vamos encontrar todos os pares?</p></div>
+      </div>
+    </section>
+
+    <section class="memory-intro">
+      <div><span class="label">Missão</span><h2>Encontre todos os pares!</h2><p>Clique em duas cartas e descubra quais combinam.</p></div>
+      <div class="memory-status"><div class="status-card"><span>Jogadas</span><strong id="moves">0</strong></div><div class="status-card"><span>Pares</span><strong><span id="pairsFound">0</span>/<span id="pairsTotal">6</span></strong></div></div>
+    </section>
+
+    <section class="difficulty-section">
+      <div class="difficulty-title"><span>Nível</span><h3>Escolha a dificuldade</h3></div>
+      <div class="difficulty-buttons">
+        <button class="difficulty-button active" data-level="easy"><span class="difficulty-icon">🌱</span><span class="difficulty-text"><strong>Fácil</strong><small>6 pares • +3 ⭐</small></span></button>
+        <button class="difficulty-button" data-level="medium"><span class="difficulty-icon">🚀</span><span class="difficulty-text"><strong>Médio</strong><small>8 pares • +5 ⭐</small></span></button>
+        <button class="difficulty-button" data-level="hard"><span class="difficulty-icon">🏆</span><span class="difficulty-text"><strong>Difícil</strong><small>10 pares • +8 ⭐</small></span></button>
+      </div>
+    </section>
+
+    <section class="game-area"><div id="memoryBoard" class="memory-board"></div></section>
+    <section class="memory-actions"><button id="restartButton" class="restart-button">🔄 Jogar novamente</button></section>
+  </main>
+</div>
+
+<div id="victoryModal" class="victory-modal">
+  <div class="victory-card">
+    <img src="assets/mascote/girafinha_comemorando.png" alt="Girafinha comemorando" class="victory-mascot-img">
+    <div class="victory-icon">🏆</div>
+    <h2>Muito bem, Arthur!</h2>
+    <p>Você encontrou todos os pares!</p>
+    <div class="victory-stars">⭐ ⭐ ⭐</div>
+    <p class="victory-info">Você ganhou <strong id="victoryReward">+3 estrelinhas</strong></p>
+    <button id="playAgainButton" class="play-again-button">Jogar de novo</button>
+    <button class="home-button" onclick="window.location.href='index.html'">Voltar ao início</button>
+  </div>
+</div>
+
+<div id="achievementToast" class="achievement-toast">
+  <img src="assets/mascote/girafinha_conquista.png" alt="Girafinha com conquista" class="achievement-mascot">
+  <div><small>Nova conquista!</small><strong id="achievementToastName"></strong></div>
+</div>
+
+<div id="confettiContainer" class="confetti-container"></div>
+<script src="js/memoria.js"></script>
+</body>
+</html>
